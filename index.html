@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeartMatch - Dating App</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7f1f5;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            height: 70px;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e91e63;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: #e91e63;
+        }
+
+        .login-btn {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 55px 20px 30px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: #e91e63;
+        }
+
+        .hero p {
+            color: #777;
+            font-size: 18px;
+        }
+
+        /* Profile area */
+        .profile-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            width: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            transition: 0.3s;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .profile-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            padding: 18px;
+        }
+
+        .profile-info h2 {
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+        .age {
+            color: #777;
+            font-weight: normal;
+        }
+
+        .location {
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .bio {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #fde4ed;
+            color: #e91e63;
+            padding: 6px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        /* Action buttons */
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin: 25px 0 50px;
+        }
+
+        .action-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            font-size: 25px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .pass {
+            background: #eee;
+            color: #555;
+        }
+
+        .like {
+            background: #e91e63;
+            color: white;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Features */
+        .features {
+            background: white;
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 30px;
+            margin-bottom: 35px;
+        }
+
+        .feature-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            width: 250px;
+            padding: 25px;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #777;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            color: #bbb;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            nav {
+                padding: 0 20px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .profile-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">❤️ HeartMatch</div>
+
+        <ul>
+            <li><a href="#">Discover</a></li>
+            <li><a href="#">Matches</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+
+        <button class="login-btn">Log In</button>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Find Your <span>Perfect Match</span></h1>
+        <p>Meet interesting people and start meaningful conversations.</p>
+    </section>
+
+
+    <!-- Profiles -->
+    <section class="profile-container">
+
+        <!-- Profile 1 -->
+        <div class="profile-card">
+
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80"
+                 alt="Profile">
+
+            <div class="profile-info">
+
+                <h2>Emma <span class="age">26</span></h2>
+
+                <p class="location">📍 Mumbai, India</p>
+
+                <p class="bio">
+                    Coffee lover ☕, traveler ✈️ and photography enthusiast 📸.
+                    Looking for someone who enjoys exploring new places.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Travel</span>
+                    <span class="tag">Photography</span>
+                    <span class="tag">Coffee</span>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Profile 2 -->
+        <div class="profile-card">
+
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80"
+                 alt="Profile">
+
+            <div class="profile-info">
+
+                <h2>Ryan <span class="age">28</span></h2>
+
+                <p class="location">📍 Pune, India</p>
+
+                <p class="bio">
+                    Football fan ⚽, foodie 🍕 and weekend explorer.
+                    Always up for a good conversation.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Football</span>
+                    <span class="tag">Food</span>
+                    <span class="tag">Movies</span>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Profile 3 -->
+        <div class="profile-card">
+
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
+                 alt="Profile">
+
+            <div class="profile-info">
+
+                <h2>Sophia <span class="age">25</span></h2>
+
+                <p class="location">📍 Bangalore, India</p>
+
+                <p class="bio">
+                    Music lover 🎵, reader 📚 and adventure seeker.
+                    Looking for someone genuine and fun.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Music</span>
+                    <span class="tag">Books</span>
+                    <span class="tag">Travel</span>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Action Buttons -->
+    <div class="actions">
+
+        <button class="action-btn pass" onclick="passProfile()">
+            ✕
+        </button>
+
+        <button class="action-btn like" onclick="likeProfile()">
+            ❤️
+        </button>
+
+    </div>
+
+
+    <!-- Features -->
+    <section class="features">
+
+        <h2>Why HeartMatch?</h2>
+
+        <div class="feature-container">
+
+            <div class="feature">
+                <div class="feature-icon">💖</div>
+                <h3>Smart Matching</h3>
+                <p>
+                    Discover people based on shared interests and preferences.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>Privacy First</h3>
+                <p>
+                    Your personal information stays protected while you connect.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">💬</div>
+                <h3>Easy Messaging</h3>
+                <p>
+                    Start conversations with your matches and get to know them.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 HeartMatch. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+
+        let likes = 0;
+
+        function likeProfile() {
+
+            likes++;
+
+            alert("❤️ It's a Like! Total likes: " + likes);
+
+        }
+
+        function passProfile() {
+
+            alert("Profile passed.");
+
+        }
+
+    </script>
+
+</body>
+</html>
